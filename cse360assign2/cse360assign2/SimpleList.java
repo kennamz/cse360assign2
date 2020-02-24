@@ -71,7 +71,7 @@ public class SimpleList {
 	}
 	
 	public int search(int parameter) {
-	//– Return the location of the parameter in the list. If the parameter is not
+	//Return the location of the parameter in the list. If the parameter is not
 	//in the list, then return -1.
 		int index = -1;
 		int iterator = 0;
@@ -85,6 +85,28 @@ public class SimpleList {
 			iterator++;
 		}
 		return index;
+	}
+	
+	public void append(int parameter) {
+	//append the parameter to the end of the list. If the list was full, 
+	//then increase the size by 50% so there will be room. Increment the count.
+		if (count == size) {
+			size = (int)(size * 1.5);
+			list = Arrays.copyOf(list, size);
+		}
+		list[count] = parameter;
+		count++;
+		return;
+	}
+	
+	public int first() {
+	//Return the first element in the list
+		return list[0];
+	}
+	
+	public int size() {
+	//Return the current number of possible locations in the list
+		return size;
 	}
 
 }
