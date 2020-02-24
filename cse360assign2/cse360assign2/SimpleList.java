@@ -1,24 +1,26 @@
 package cse360assign2;
+import java.util.Arrays; 
 
 public class SimpleList {
 
 	private int[] list;
 	private int count;
+	private int size;
 	
 	public SimpleList() {
 	//Create an array to hold 10 integers and set count to 0
 		list = new int[10];
 		count = 0;
+		size = 10;
 	}
 	
 	public void add(int parameter) {
 	//Add the parameter to the list at the beginning. Move all the other 
-	//integers in the list over so there is room. If the list was full, 
-	//then the last element	“falls off” the list. Increment the count as needed.
-		if (count == 10) {
-		//allows the following for loop to write over the last element if the list is 
-		//full, making it "fall off". 
-			count--;
+	//integers in the list over so there is room. If the list was full,
+	//then increase the size by 50% so there will be room. Increment the count.
+		if (count == size) {
+			size = (int)(size * 1.5);
+			list = Arrays.copyOf(list, size);
 		}
 		for (int iterator = count - 1; iterator >= 0; iterator--) {
 			list[iterator + 1] = list[iterator];
@@ -30,13 +32,18 @@ public class SimpleList {
 	
 	public void remove(int parameter) {
 	//If the parameter is in the list, then remove it. The other values in the
-	//list may need to be moved down. Adjust the count as needed.
+	//list may need to be moved down. Adjust the count as needed.  If the
+	//list has more than 25% empty places, the decrease the size of the list.
 		int index = this.search(parameter);
 		if (index != -1) {
 			for (int iterator = index; iterator < count - 1; iterator++) {
 				list[iterator] = list[iterator + 1];
 			}
 			count--;
+		}
+		if (count <= 0.75 * size) {
+			size = (int)(size * 0.75);
+			list = Arrays.copyOf(list, size);
 		}
 		return;
 	}
