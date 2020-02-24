@@ -1,3 +1,20 @@
+//Name: Kenna Zimmerman
+//Class ID: 377
+//Assignment 2
+
+//This file is an implementation of a simple list built with an array.
+//Methods:
+//	SimpleList() - constructor
+//	add(parameter) - adds parameter to the beginning of list
+//	remove(parameter) - removes parameter if it exists
+//	count() - returns the number of elements in the list
+//	toString() - returns a string of all the elements in list
+//	search(parameter) - returns the index of parameter, or -1 if not found 
+//	append(parameter) - adds parameter to the end of list
+//	first() - returns the first element of the list
+//	size() - returns the current capacity of the list
+
+
 package cse360assign2;
 import java.util.Arrays; 
 
